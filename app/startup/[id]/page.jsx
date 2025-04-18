@@ -2,62 +2,63 @@
 import Image from "next/image";
 import Link from "next/link";
 import {getStartUpDetails} from "@/lib/getStartUp"
+import { formatDate } from "@/lib/utils";
 
-const page = async ({params}) => {
+export default async function page  ({params}) {
     const details =  await getStartUpDetails(params.id)
     // console.log(details);
-    const {title, description, img, _id,category,author_name,author_photo} = details
+    const {title, pitch, img, category,author,_createdAt} = details || {}
     return (
-        <div className=" my-12">
-        <section className="bg-white dark:bg-gray-900">
-          <div className="container px-6 py-10 mx-auto">
-            <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white"></h1>
-  
-            <div className="mt-8 lg:-mx-6 lg:flex lg:items-center">
-              <img
-                className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
-                src={img}
-                alt="  startup details"
+        <div >
+   <section className="pink_container !min-h-[230px]">
+        <p className="tag">{formatDate(_createdAt)}</p>
+
+        <h1 className="heading">{title}</h1>
+        {/* <p className="sub-heading !max-w-5xl">{title}</p> */}
+      </section>
+
+      <section className="section_container">
+        <Image
+          src={img || "/no"}
+          alt={"thumbnail"|| ""}
+          width={100}
+          height={0}
+          className="w-full h-auto rounded-xl"
+        />
+
+        <div className="space-y-5 mt-10 max-w-4xl mx-auto">
+          <div className="flex-between gap-5">
+            <Link
+              href={`/user/${author?.id|| ""}`}
+              className="flex gap-2 items-center mb-3"
+            >
+              <Image
+                src={author?.image ||"/no"}
+                alt={"avatar"|| ""}
+                width={64}
+                height={64}
+                className="rounded-full drop-shadow-lg"
               />
-  
-              <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
-                <p className="text-sm text-pink-500 uppercase">{category}</p>
-  
-                <a
-                  href="#"
-                  className="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white"
-                >
-                  {title}
-                </a>
-  
-                <p className="mt-3 text-base text-neutral-800  line-height-3 dark:text-gray-300 md:text-sm">
-                  {description}
-                  <br />
-          
+
+              <div>
+                <p className="text-20-medium">{author?.name}</p>
+                <p className="text-16-medium !text-black-300">
+                  {/* @{author.username} */}
                 </p>
-  
-                <div className="flex items-center mt-6">
-                  <img
-                    className="object-cover object-center w-10 h-10 rounded-full"
-                    src={author_photo}
-                    alt=""
-                  />
-  
-                  <div className="mx-4">
-                    <h1 className="text-sm text-gray-700 dark:text-gray-200">
-                      {author_name}
-                    </h1>
-                    {/* <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {postedDate}
-                    </p> */}
-                  </div>
-                </div>
               </div>
-            </div>
+            </Link>
+
+            <p className="category-tag">{category}</p>
           </div>
-        </section>
+
+          <h3 className="text-30-bold">Pitch Details</h3>
+
+          <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+          {pitch}</p>
+          </div>
+</section>
       </div>
     );
 };
 
-export default page;
+

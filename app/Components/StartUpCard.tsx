@@ -38,12 +38,12 @@ const StartUpCard = ({ post }: { post: StartUpCardType }) => {
               <h3 className="text-26-semibold line-clamp-1">{title}</h3>
             </Link>
           </div>
-          <Link href={`/user/${author?._id}`}>
+          <Link href={`/user/${author?.id|| ""}`}>
             <Image
-              src={author?.image}
-              alt={author?.name}
-              width={164}
-              height={100}
+              src={author?.image || ""}
+              alt={author?.name|| ""}
+              width={48}
+              height={48}
               className="rounded-full"
             />
           </Link>
@@ -52,21 +52,13 @@ const StartUpCard = ({ post }: { post: StartUpCardType }) => {
         <Link href={`/startup/${_id}`}>
           <p className="startup-card_desc">{description}</p>
 
-          {/* <Image
-    src={image}
-    alt="placeholder"
-    height={164}
-    width={100}
-    className="startup-card_img"
-  /> */}
 
-{/*       
-          <img src={image} alt="" height={164}  width={100}className="startup-card_img" /> */}
+
           <Image
-              src={image}
+              src={image }
               alt={ "Default description"}
-              width={48}
-              height={48}
+              width={164}
+              height={100}
               className="startup-card_img"
             />
         </Link>
