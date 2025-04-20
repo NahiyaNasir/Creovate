@@ -1,10 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
+
 import { Button } from "@/components/ui/button";
+import { Author, Startup } from "@/lib/type";
 import { formatDate } from "@/lib/utils";
 import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+export type StartUpCardType = Omit<Startup, "author"> & { author?: Author };
 
 const StartUpCard = ({ post }: { post: StartUpCardType }) => {
   const {
@@ -55,7 +57,7 @@ const StartUpCard = ({ post }: { post: StartUpCardType }) => {
 
 
           <Image
-              src={image }
+              src={image || "vv" }
               alt={ "Default description"}
               width={164}
               height={100}
