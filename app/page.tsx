@@ -1,5 +1,5 @@
 import SearchFrom from "./Components/SearchFrom";
-import StartUpCard from "./Components/StartUpCard";
+import StartUpCard, { StartUpCardType } from "./Components/StartUpCard";
  import {getStartUp} from  "../lib/getStartUp"
 export default async function Home({
   searchParams,
