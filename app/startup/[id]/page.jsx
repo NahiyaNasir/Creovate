@@ -5,13 +5,14 @@ import {getStartUpDetails} from "@/lib/getStartUp"
 import { formatDate } from "@/lib/utils";
 
 export default async function page  ({params}) {
+
     const details =  await getStartUpDetails(params.id)
-    // console.log(details);
+    console.log(details);
     const {title, pitch, img, category,author,_createdAt} = details || {}
     return (
         <div >
    <section className="pink_container !min-h-[230px]">
-        <p className="tag">{formatDate(_createdAt)}</p>
+        <p className="tag">{_createdAt}</p>
 
         <h1 className="heading">{title}</h1>
         {/* <p className="sub-heading !max-w-5xl">{title}</p> */}

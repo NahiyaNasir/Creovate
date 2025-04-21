@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB"
+import { ObjectId } from "mongodb"
 
 
 
@@ -7,7 +8,7 @@ export const GET=async(request,{params})=>{
      const collection= await  db.collection('startup')
      try {
      
-       const service= await collection.findOne({_id:params.id})
+       const service= await collection.findOne({ _id: new ObjectId(params.id) })
        return Response.json(service)
      } catch (error) {
             console.log(error);
