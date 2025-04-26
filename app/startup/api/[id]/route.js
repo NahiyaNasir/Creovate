@@ -8,8 +8,8 @@ export const GET=async(request,{params})=>{
      const collection= await  db.collection('startup')
      try {
      
-       const service= await collection.findOne({ _id: new ObjectId(params.id) })
-       return Response.json(service)
+       const startup= await collection.findOne({ _id: new ObjectId(params.id) })
+       return Response.json(startup)
      } catch (error) {
             console.log(error);
      }

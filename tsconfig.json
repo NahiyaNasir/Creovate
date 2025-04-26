@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/getStartUp.js", "app/startup/api/get-all/route.js", "app/startup/[id]/page.jsx", "lib/action.js", "app/Components/StartUpFrom.tsx", "app/Components/StartUpCard.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/getStartUp.js", "app/startup/api/get-all/route.js", "app/startup/[id]/page.jsx", "lib/action.js", "app/Components/StartUpFrom.tsx", "app/Components/StartUpCard.tsx", "app/startup/user/[id]/page.jsx"],
   "exclude": ["node_modules"]
 }

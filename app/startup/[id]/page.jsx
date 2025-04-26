@@ -3,12 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import {getStartUpDetails} from "@/lib/getStartUp"
 import { formatDate } from "@/lib/utils";
+import View from "@/app/Components/View";
+
 
 export default async function page  ({params}) {
-
-    const details =  await getStartUpDetails(params.id)
-    console.log(details);
-    const {title, pitch, img, category,author,_createdAt} = details || {}
+  const { id } = await params;
+        //  console.log(id);
+  const details = await getStartUpDetails(id);
+  
+    // console.log(details);
+    const {title, pitch, image, category,author,_createdAt} = details || {}
     return (
         <div >
    <section className="pink_container !min-h-[230px]">
@@ -20,10 +24,10 @@ export default async function page  ({params}) {
 
       <section className="section_container">
         <Image
-          src={img || "/no"}
+          src={image || "/no"}
           alt={"thumbnail"|| ""}
           width={100}
-          height={0}
+          height={100}
           className="w-full h-auto rounded-xl"
         />
 
@@ -57,6 +61,8 @@ export default async function page  ({params}) {
           <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
           {pitch}</p>
           </div>
+
+      <View id={id}></View>
 </section>
       </div>
     );
