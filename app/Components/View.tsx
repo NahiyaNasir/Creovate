@@ -9,7 +9,7 @@ const View=async({id}:ObjectId)=>{
   const objectId = new ObjectId(id);
               const startup= await startupCollection.findOne({_id: objectId})
               const totalViews =Number (startup?.views||0);
-              console.log(totalViews);
+              // console.log(totalViews);
             after(async()=>{
               await startupCollection.updateOne(
                 { _id: objectId },

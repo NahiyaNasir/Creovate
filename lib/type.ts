@@ -1,7 +1,7 @@
 export type Startup = {
     _id: string;
     _type: "startup";
-    _createdAt: string;
+    createdAt: string;
     _updatedAt: string;
     _rev: string;
     title?: string;

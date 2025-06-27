@@ -10,7 +10,7 @@ export type StartUpCardType = Omit<Startup, "author"> & { author?: Author };
 
 const StartUpCard = ({ post }: { post: StartUpCardType }) => {
   const {
-    _createdAt,
+    createdAt,
     _id,
     description,
     image,
@@ -24,7 +24,8 @@ const StartUpCard = ({ post }: { post: StartUpCardType }) => {
     <div>
       <li className="startup-card group">
         <div className="flex-between">
-          <p className="startup_card_date">{formatDate(_createdAt)}</p>
+          <p className="startup_card_date">{formatDate(createdAt)}</p>
+        
           <div className="flex gap-1.5">
             <EyeIcon className="size-6 text-primary" />
             <span className="text-16-medium">{views}</span>
